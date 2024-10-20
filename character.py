@@ -13,7 +13,8 @@ class Character :
 
 class Player (Character):
   def __init__(self, name):
-    super().__init__(name,1,100,10,5,3,3)
+    super().__init__(name,1,100,10,5,3,3,10,15)
+    self.weapon = "knife"
 
 class Monster (Character):
   def __init__(self, name, level, health, attack, defense, postion_x, postion_y, critic_hit, miss_hit):
