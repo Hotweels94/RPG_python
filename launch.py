@@ -1,4 +1,5 @@
 from game import start_game
+from character import *
 
 def launch_screen():
     player_choice = False
@@ -13,7 +14,8 @@ def launch_screen():
 
         if player_input == 1:
             player_choice = True
-            start_game()
+            player = Player((input("Enter your name: ")))
+            start_game(player)
         elif player_input == 2:
             print("To move, you need to tap the direction where you want to move.")
             print("The directions are : 'left', 'right', 'up' and 'down' ")
