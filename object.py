@@ -10,14 +10,14 @@ class Object:
         pass
     
 class health_potion (Object):
-  def use(self,Entity):
-    Entity.health += self.value
+  def use(self,Player):
+    Player.health += self.value
 
 class attack_potion (Object):
-  def use(self,Entity):
-    Entity.attack += self.value
+  def use(self,Player):
+    Player.attack += self.value
 
 class defense_potion (Object):
-  def use(self,Entity):
-    Entity.defense += self.value
+  def use(self,Player):
+    Player.defense += self.value
         
