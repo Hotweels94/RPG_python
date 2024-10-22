@@ -1,5 +1,5 @@
 class Character :
-  def __init__(self, name, level, health, attack, defense, postion_x, postion_y, critic_hit, miss_hit):
+  def __init__(self, name, level, health, attack, defense, position_x, position_y, critic_hit_chance, critic_hit, miss_hit_chance):
     self.name = name
     self.level = level
     self.xp = 0
@@ -8,14 +8,15 @@ class Character :
     self.attack = attack
     self.defense = defense
     self.inventory = []
-    self.postion_x = postion_x
-    self.postion_y = postion_y
+    self.position_x = position_x
+    self.position_y = position_y
+    self.critic_hit_chance = critic_hit_chance
     self.critic_hit = critic_hit
-    self.miss_hit = miss_hit
+    self.miss_hit_chance = miss_hit_chance
 
 class Player (Character):
   def __init__(self, name):
-    super().__init__(name,1,100,10,5,3,3,10,15)
+    super().__init__(name, 1, 100, 10, 5, 3, 3, 10, 20, 2)
     self.weapon = "knife"
     
   def level_up(self):
@@ -26,14 +27,17 @@ class Player (Character):
       self.health += 15
       self.attack += 5
       self.defense += 5 
-      self.critic_hit += 2
-      self.miss_hit -= 1
+      self.critic_hit_chance += 2
+      self.miss_hit_chance -= 1
+      self.critic_hit += 0.5
+      return True
 
 class Monster (Character):
-  def __init__(self, name, level, health, attack, defense, postion_x, postion_y, critic_hit, miss_hit):
-    super().__init__(name,level, health, attack, defense, postion_x, postion_y, critic_hit, miss_hit)
+  def __init__(self, name, level, health, attack, defense, position_x, position_y, critic_hit_chance, critic_hit, miss_hit, drop_xp):
+    super().__init__(name,level, health, attack, defense, position_x, position_y, critic_hit_chance, critic_hit, miss_hit)
+    self.drop_xp = drop_xp 
 
 class Boss (Monster):
-  def __init__(self, name, level, health, attack, defense, postion_x, postion_y, critic_hit, miss_hit):
-    super().__init__(name,level, health, attack, defense, postion_x, postion_y, critic_hit, miss_hit)
+  def __init__(self, name, level, health, attack, defense, position_x, position_y, critic_hit_chance, critic_hit, miss_hit, drop_xp):
+    super().__init__(name,level, health, attack, defense, position_x, position_y, critic_hit_chance, critic_hit, miss_hit, drop_xp)
     self.boss_dead = False

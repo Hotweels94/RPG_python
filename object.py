@@ -1,10 +1,10 @@
 class Object:
     
-    def __init__(self, name, value, postion_x, postion_y,):
+    def __init__(self, name, value, position_x, position_y,):
         self.name = name
         self.value = value
-        self.postion_x = postion_x
-        self.postion_y = postion_y
+        self.position_x = position_x
+        self.position_y = position_y
         
     def Use(self, Character):
         pass
