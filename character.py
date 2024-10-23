@@ -37,6 +37,7 @@ class Monster (Character):
   def __init__(self, name, level, health, attack, defense, position_x, position_y, critic_hit_chance, critic_hit, miss_hit, drop_xp):
     super().__init__(name,level, health, attack, defense, position_x, position_y, critic_hit_chance, critic_hit, miss_hit)
     self.drop_xp = drop_xp 
+    self.run_away = False
 
 class Boss (Monster):
   def __init__(self, name, level, health, attack, defense, position_x, position_y, critic_hit_chance, critic_hit, miss_hit, drop_xp):

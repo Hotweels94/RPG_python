@@ -10,7 +10,7 @@ def fight(player, list_monster):
                 print("What do you want to do ? ")
                 print("1. You can attack with your weapon : ", player.weapon)
                 print("2. You can use an object from your inventory")
-                print("3. Or you can run away")
+                print("3. Or you can run away (the monster will diseapear but you will don't win any xp)")
                 
                 player_input = input("Your choice (1, 2 or 3) : ")
                 if player_input == "1":
@@ -49,13 +49,14 @@ def fight(player, list_monster):
                             print("You use your defense_potion! You have: ", player.defense, " defense points")
                         player.inventory.remove(selected_obj)
 
-                    elif player_input == "3":
-                        print("You ran away !")
-                        list_monster.remove(monster)
-
                     else:
                         print("Invalid object name.")
                     print("\n")
+                
+                elif player_input == "3":
+                        print("You ran away !")
+                        monster.run_away = True
+                        monster.health = 0
             
                 monster_test = randrange(1,100)
                 if monster_test < monster.critic_hit_chance:
@@ -71,10 +72,17 @@ def fight(player, list_monster):
                     print("You have ", player.health, " HP")
                 print("\n")
                 
-            if monster.health <= 0:
+            if monster.health <= 0 and monster.run_away == False: 
                 list_monster.remove(monster)
                 player.xp += monster.drop_xp
                 print("YOU KILL THE",monster.level, monster.name + "!")
                 if player.level_up():
                     print("YOU LEVEL UP ! You are level ", player.level, " You have better stats !")
+                    
+            if player.health <= 0:
+                print("YOU KILL THE DIED !!")
+                exit()
+                    
+            if monster.run_away == True and monster.health <= 0:
+                list_monster.remove(monster)
             break 

@@ -41,6 +41,9 @@ def start_game(player):
             verify_object_and_player_position(player, list_objects)
             fight(player, list_monster)
             
+        elif player_input.lower() == "quit":
+            exit()
+            
         else:
             print("Please enter a good direction")
             continue
