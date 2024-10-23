@@ -9,19 +9,20 @@ def fight(player, list_monster):
             while player.health > 0 and monster.health > 0:
                 print("What do you want to do ? ")
                 print("1. You can attack with your weapon : ", player.weapon)
-                print("2. Or you can use an object from your inventory")
+                print("2. You can use an object from your inventory")
+                print("3. Or you can run away")
                 
-                player_input = input("Your choice (1 or 2) : ")
+                player_input = input("Your choice (1, 2 or 3) : ")
                 if player_input == "1":
                     player_test = randrange(1,100)
                     if player_test < player.critic_hit_chance:
-                        monster.health -= player.attack * player.critic_hit 
+                        monster.health -= player.attack * player.critic_hit * player.weapon_stat - monster.defense
                         print("CRITIC HIT !")
                         print(monster.name, " has ", monster.health, " HP")
                     elif player_test > 100 - player.miss_hit_chance:
                         print("Oof, you miss !")
                     else:
-                        monster.health -= player.attack
+                        monster.health -= player.attack * player.weapon_stat - monster.defense
                         print("You hit him !")
                         print(monster.name, " has ", monster.health, " HP")
                     print("\n")
@@ -47,10 +48,29 @@ def fight(player, list_monster):
                         elif player_input == "defense potion":
                             print("You use your defense_potion! You have: ", player.defense, " defense points")
                         player.inventory.remove(selected_obj)
+
+                    elif player_input == "3":
+                        print("You ran away !")
+                        list_monster.remove(monster)
+
                     else:
                         print("Invalid object name.")
                     print("\n")
             
+                monster_test = randrange(1,100)
+                if monster_test < monster.critic_hit_chance:
+                    player.health -= monster.attack * monster.critic_hit - player.defense
+                    print("Ouch, your ennemy hit you with a critic hit !")
+                    print("You have ", player.health, " HP")
+                elif monster_test > 100 - monster.miss_hit_chance:
+                    print("Nice, ", monster.name, "doesn't hit you")
+                    print("You have ", player.health, " HP")
+                else:
+                    player.health -= monster.attack - player.defense
+                    print(monster.name, " hits you !")
+                    print("You have ", player.health, " HP")
+                print("\n")
+                
             if monster.health <= 0:
                 list_monster.remove(monster)
                 player.xp += monster.drop_xp

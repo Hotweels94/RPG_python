@@ -16,8 +16,9 @@ class Character :
 
 class Player (Character):
   def __init__(self, name):
-    super().__init__(name, 1, 100, 10, 5, 3, 3, 10, 20, 2)
+    super().__init__(name, 1, 100, 10, 3, 3, 3, 10, 20, 2)
     self.weapon = "knife"
+    self.weapon_stat = 1
     
   def level_up(self):
     if self.xp >= 100:

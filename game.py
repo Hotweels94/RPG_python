@@ -1,5 +1,6 @@
 from map import *
 from fight import *
+from random import randint
 
 def start_game(player):
     boss = Boss("Boss",10,1000,50,20,0,0,25,4,25, 1000)
