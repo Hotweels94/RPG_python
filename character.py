@@ -16,7 +16,7 @@ class Character :
 
 class Player (Character):
   def __init__(self, name):
-    super().__init__(name, 1, 100, 10, 3, 3, 3, 10, 20, 2)
+    super().__init__(name, 1, 100, 10, 3, 3, 3, 10, 2, 15)
     self.weapon = "knife"
     self.weapon_stat = 1
     

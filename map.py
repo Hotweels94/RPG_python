@@ -1,5 +1,6 @@
 from character import *
 from object import *
+from random import randint
 
 def verify_player_position(player):
     
@@ -28,3 +29,10 @@ def verify_object_and_player_position(player, list_objects):
             print("YOU'VE FOUND AN OBJECT ! :", obj.name)
             list_objects.remove(obj)
             break 
+
+def random_position_without_exclude_coordinates(forbidden_coords):
+    while True:
+        x = randint(0, 6)
+        y = randint(0, 6)
+        if (x, y) not in forbidden_coords:
+            return (x, y)

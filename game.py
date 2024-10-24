@@ -3,21 +3,25 @@ from fight import *
 from random import randint
 
 def start_game(player):
+
+    forbidden_coords = [(3, 3), (0, 0)]
+
     boss = Boss("Boss",10,1000,50,20,0,0,25,4,25, 1000)
     
     list_objects = [
-        health_potion("health potion", 10, 4, 3),
-        attack_potion("attack potion", 10, 5, 2),
-        defense_potion("defense potion", 10, 1, 4)
+        health_potion("health potion", 10, *random_position_without_exclude_coordinates(forbidden_coords)),
+        attack_potion("attack potion", 10, *random_position_without_exclude_coordinates(forbidden_coords)),
+        defense_potion("defense potion", 10, *random_position_without_exclude_coordinates(forbidden_coords))
     ]
     
     list_monster = [
-        Monster("Wolf",1, 50, 5, 2, 5, 5, 10, 1.5, 20, 150)
+        Monster("Wolf",1, 50, 5, 2, *random_position_without_exclude_coordinates(forbidden_coords), 10, 1.5, 20, 150)
     ]
     
     print("Ok ", player.name ," You are in the middle of a forest, what do you want to do ? ")
     while player.health > 0 and boss.boss_dead == False:
-        player_input = input("Your movement : ")
+
+        player_input = input("Your movement (or quit the game) : ")
         
         old_x, old_y = player.position_x, player.position_y
         
