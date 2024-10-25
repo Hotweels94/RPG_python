@@ -1,27 +1,38 @@
-from map import *
-from fight import *
+from Game_logic.map import *
+from Game_logic.fight import *
 from random import randint
+import os
 
+# Func to start the game
 def start_game(player):
 
+    # Spawn coordinates of player and boss. It's forbidden because nothing spawn on their cases
     forbidden_coords = [(3, 3), (0, 0)]
 
-    boss = Boss("Boss",10,1000,50,20,0,0,25,4,25, 1000)
+    # Creation of the boss
+    boss = Boss("Dragon",10,1000,50,20,0,0,25,4,25, 1000, "WoW, The dragon burned you !! ")
     
+    # Creation of all of the objects
     list_objects = [
-        health_potion("health potion", 10, *random_position_without_exclude_coordinates(forbidden_coords)),
+        health_potion("health potion", 10, 2, 2),
         attack_potion("attack potion", 10, *random_position_without_exclude_coordinates(forbidden_coords)),
-        defense_potion("defense potion", 10, *random_position_without_exclude_coordinates(forbidden_coords))
+        defense_potion("defense potion", 5, *random_position_without_exclude_coordinates(forbidden_coords))
     ]
     
+    # Creation of all of the monsters
     list_monster = [
-        Monster("Wolf",1, 50, 5, 2, *random_position_without_exclude_coordinates(forbidden_coords), 10, 1.5, 20, 150)
+        Monster("Wolf",1, 50, 5, 2, 1,1, 10, 1.5, 20, 150, "Oh the wolf bite your head !!")
     ]
     
+    os.system('cls')
     print("Ok ", player.name ," You are in the middle of a forest, what do you want to do ? ")
+    
+    # While the player and the boss ARE alive
     while player.health > 0 and boss.boss_dead == False:
 
+        # Movement input and after we verify the position of the player
         player_input = input("Your movement (or quit the game) : ")
+        print("\n")
         
         old_x, old_y = player.position_x, player.position_y
         
@@ -52,8 +63,7 @@ def start_game(player):
             print("Please enter a good direction")
             continue
         
+        # If the player try to go out of the map
         if not verify_player_position(player):
             player.position_x, player.position_y = old_x, old_y
             print("You hit a Wall, you don't move of your case and please choose another direction")
-
-    

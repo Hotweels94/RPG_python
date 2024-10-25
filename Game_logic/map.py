@@ -1,7 +1,9 @@
-from character import *
-from object import *
+import os
+from Classes.character import *
+from Classes.object import *
 from random import randint
 
+# Verify position of the player on the map
 def verify_player_position(player):
     
     print("x : ", player.position_x, " y : ", player.position_y )
@@ -22,6 +24,7 @@ def verify_player_position(player):
     
     return True
 
+# Verify if the player found an object
 def verify_object_and_player_position(player, list_objects):
     for obj in list_objects:
         if player.position_x == obj.position_x and player.position_y == obj.position_y:

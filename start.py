@@ -1,9 +1,12 @@
-from game import start_game
-from character import *
+import os
+from Game_logic.game import start_game
+from Classes.character import *
 
+# Func to launch the game
 def launch_screen():
     player_choice = False
 
+    # Choice of the player
     while player_choice != True:
         print("MAIN MENU \n")
         print("1. Create a new game \n")
@@ -25,5 +28,5 @@ def launch_screen():
             player_choice = True
             exit()
     
-
+os.system('cls')
 launch_screen()
