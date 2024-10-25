@@ -67,3 +67,4 @@ def start_game(player):
         if not verify_player_position(player):
             player.position_x, player.position_y = old_x, old_y
             print("You hit a Wall, you don't move of your case and please choose another direction")
+            print("You are on x : ", player.position_x, " y : ", player.position_y)
