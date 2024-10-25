@@ -1,6 +1,7 @@
 from Game_logic.map import *
 from Game_logic.fight import *
 from random import randint
+from start import launch_screen
 import os
 
 # Func to start the game
@@ -72,4 +73,4 @@ def start_game(player):
     if boss.boss_dead == True:
         print("YOU KILLED THE BOSS")
         print("Congratulation, you finish the game, you are a real adventurer ", player.name, " !")
-        exit()
+        launch_screen()
