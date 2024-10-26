@@ -20,7 +20,9 @@ list_objects = [
 
 # Creation of all of the monsters
 list_monster = [
-    Monster("Wolf",1, 50, 5, 2, 1,1, 10, 1.5, 20, 150, "Oh the wolf bite your head !!")
+    Monster("Wolf",1, 50, 5, 2, 1,1, 10, 1.5, 20, 150, "Oh the wolf bite your head !!"),
+    Monster("Wolf",1, 50, 5, 2, 4,4, 10, 1.5, 20, 20, "Oh the wolf bite your head !!"),
+    Monster("Wolf",1, 50, 5, 2, 5,5, 10, 1.5, 20, 70, "Oh the wolf bite your head !!")
 ]
 
 

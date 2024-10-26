@@ -3,6 +3,7 @@ class Character :
     self.name = name
     self.level = level
     self.xp = 0
+    self.max_xp = 100
     self.level_multiplicator = 1
     self.health = health
     self.attack = attack
@@ -25,6 +26,7 @@ class Player (Character):
       "name": self.name,
       "level": self.level,
       "xp": self.xp,
+      "max_xp": self.max_xp,
       "level_multiplicator": self.level_multiplicator,
       "health": self.health,
       "attack": self.attack,
@@ -40,17 +42,18 @@ class Player (Character):
     }
     
   def level_up(self):
-    if self.xp >= 100:
-      self.xp = self.xp * self.level_multiplicator
-      self.level += 1
-      self.level_multiplicator += 0.5
-      self.health += 15
-      self.attack += 5
-      self.defense += 5 
-      self.critic_hit_chance += 2
-      self.miss_hit_chance -= 1
-      self.critic_hit += 0.5
-      return True
+    print("YOU LEVEL UP ! You are level ", self.level, " You have better stats !")
+    self.xp = 0
+    self.level += 1
+    self.level_multiplicator += 0.5
+    self.max_xp = self.max_xp * self.level_multiplicator
+    self.health += 15
+    self.attack += 5
+    self.defense += 5 
+    self.critic_hit_chance += 2
+    self.miss_hit_chance -= 1
+    self.critic_hit += 0.5
+    return True
 
 class Monster (Character):
   def __init__(self, name, level, health, attack, defense, position_x, position_y, critic_hit_chance, critic_hit, miss_hit, drop_xp, special_hit):

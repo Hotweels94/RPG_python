@@ -82,6 +82,9 @@ def fight(player, list_monster):
                     print("\n")
                     monster.run_away = True
                     monster.health = 0
+                
+                else: 
+                    print("For next round, type 1, 2 or 3. Don't fail please ")
             
                 # The monster fight
                 monster_test = randrange(1,100)
@@ -114,8 +117,8 @@ def fight(player, list_monster):
                 print("YOU KILL THE",monster.level, monster.name + "!")
                 
                 # Player level up if he has enough xp
-                if player.level_up():
-                    print("YOU LEVEL UP ! You are level ", player.level, " You have better stats !")
+                if player.xp >= player.max_xp:
+                    player.level_up()
                 
             # Player dead
             if player.health <= 0:
