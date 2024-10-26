@@ -20,6 +20,25 @@ class Player (Character):
     self.weapon = "knife"
     self.weapon_stat = 1
     
+  def to_dict(self):
+    return {
+      "name": self.name,
+      "level": self.level,
+      "xp": self.xp,
+      "level_multiplicator": self.level_multiplicator,
+      "health": self.health,
+      "attack": self.attack,
+      "defense": self.defense,
+      "inventory": self.inventory,
+      "position_x": self.position_x,
+      "position_y": self.position_y,
+      "critic_hit_chance": self.critic_hit_chance,
+      "critic_hit": self.critic_hit,
+      "miss_hit_chance": self.miss_hit_chance,
+      "weapon": self.weapon,
+      "weapon_stat": self.weapon_stat
+    }
+    
   def level_up(self):
     if self.xp >= 100:
       self.xp = self.xp * self.level_multiplicator
@@ -39,8 +58,42 @@ class Monster (Character):
     self.drop_xp = drop_xp 
     self.run_away = False
     self.special_hit = special_hit
+    
+  def to_dict(self):
+    return {
+      "name": self.name,
+      "level": self.level,
+      "health": self.health,
+      "attack": self.attack,
+      "defense": self.defense,
+      "position_x": self.position_x,
+      "position_y": self.position_y,
+      "critic_hit_chance": self.critic_hit_chance,
+      "critic_hit": self.critic_hit,
+      "miss_hit_chance": self.miss_hit_chance,
+      "drop_xp": self.drop_xp,
+      "run_away": self.run_away,
+      "special_hit": self.special_hit
+    }
 
 class Boss (Monster):
   def __init__(self, name, level, health, attack, defense, position_x, position_y, critic_hit_chance, critic_hit, miss_hit, drop_xp, special_hit):
     super().__init__(name,level, health, attack, defense, position_x, position_y, critic_hit_chance, critic_hit, miss_hit, drop_xp, special_hit)
     self.boss_dead = False
+    
+  def to_dict(self):
+    return {
+      "name": self.name,
+      "level": self.level,
+      "health": self.health,
+      "attack": self.attack,
+      "defense": self.defense,
+      "position_x": self.position_x,
+      "position_y": self.position_y,
+      "critic_hit_chance": self.critic_hit_chance,
+      "critic_hit": self.critic_hit,
+      "miss_hit_chance": self.miss_hit_chance,
+      "drop_xp": self.drop_xp,
+      "special_hit": self.special_hit,
+      "boss_dead": self.boss_dead
+    }

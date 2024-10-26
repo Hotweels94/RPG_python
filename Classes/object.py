@@ -12,12 +12,36 @@ class Object:
 class health_potion (Object):
   def use(self,Player):
     Player.health += self.value
+  
+  def to_dict(self):
+      return {
+        "name": self.name,
+        "value": self.value,
+        "position_x": self.position_x,
+        "position_y": self.position_y
+    }
 
 class attack_potion (Object):
   def use(self,Player):
     Player.attack += self.value
+    
+  def to_dict(self):
+      return {
+        "name": self.name,
+        "value": self.value,
+        "position_x": self.position_x,
+        "position_y": self.position_y
+    }
 
 class defense_potion (Object):
   def use(self,Player):
     Player.defense += self.value
+    
+  def to_dict(self):
+      return {
+        "name": self.name,
+        "value": self.value,
+        "position_x": self.position_x,
+        "position_y": self.position_y
+    }
         

@@ -1,0 +1,43 @@
+{
+    "player": [
+        {
+            "name": "d",
+            "level": 2,
+            "xp": 150,
+            "level_multiplicator": 1.5,
+            "health": 101,
+            "attack": 15,
+            "defense": 8,
+            "inventory": [
+                {
+                    "name": "health potion",
+                    "value": 10,
+                    "position_x": 2,
+                    "position_y": 2
+                }
+            ],
+            "position_x": 1,
+            "position_y": 1,
+            "critic_hit_chance": 12,
+            "critic_hit": 2.5,
+            "miss_hit_chance": 14,
+            "weapon": "knife",
+            "weapon_stat": 1
+        }
+    ],
+    "monsters": [],
+    "objects": [
+        {
+            "name": "attack potion",
+            "value": 10,
+            "position_x": 6,
+            "position_y": 0
+        },
+        {
+            "name": "defense potion",
+            "value": 5,
+            "position_x": 0,
+            "position_y": 2
+        }
+    ]
+}

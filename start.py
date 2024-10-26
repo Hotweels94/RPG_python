@@ -1,11 +1,11 @@
 import os
 from Game_logic.game import start_game
-from Classes.character import *
+from Game_logic.data import player
 
 # Func to launch the game
-def launch_screen():
+def launch_screen():  
     player_choice = False
-
+    
     # Choice of the player
     while player_choice != True:
         print("MAIN MENU \n")
@@ -14,10 +14,9 @@ def launch_screen():
         print("3. About the game \n")
         print("4. Quit \n")
         player_input = int(input("Choice : "))
-
         if player_input == 1:
             player_choice = True
-            player = Player((input("Enter your name: ")))
+            player.name = ((input("Enter your name: ")))
             start_game(player)
         elif player_input == 2:
             print("To move, you need to tap the direction where you want to move.")
@@ -26,7 +25,7 @@ def launch_screen():
             print("This RPG is made by Ryan Amsellem--Bousignac as a project for Paris Ynov Campus \n")
         elif player_input == 4:
             player_choice = True
-            exit()
+            exit()   
     
 os.system('cls')
 launch_screen()

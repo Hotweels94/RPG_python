@@ -1,38 +1,21 @@
 from Game_logic.map import *
 from Game_logic.fight import *
 from random import randint
-from start import launch_screen
+from Game_logic.data import *
 import os
+import json
 
 # Func to start the game
 def start_game(player):
-
-    # Spawn coordinates of player and boss. It's forbidden because nothing spawn on their cases
-    forbidden_coords = [(3, 3), (0, 0)]
-
-    # Creation of the boss
-    boss = Boss("Dragon",10,1000,50,20,0,0,25,4,25, 1000, "WoW, The dragon burned you !! ")
-    
-    # Creation of all of the objects
-    list_objects = [
-        health_potion("health potion", 10, 2, 2),
-        attack_potion("attack potion", 10, *random_position_without_exclude_coordinates(forbidden_coords)),
-        defense_potion("defense potion", 5, *random_position_without_exclude_coordinates(forbidden_coords))
-    ]
-    
-    # Creation of all of the monsters
-    list_monster = [
-        Monster("Wolf",1, 50, 5, 2, 1,1, 10, 1.5, 20, 150, "Oh the wolf bite your head !!")
-    ]
     
     os.system('cls')
     print("Ok ", player.name ," You are in the middle of a forest, what do you want to do ? ")
     
-    # While the player and the boss ARE alive
+    # While the player AND the boss are alive
     while player.health > 0 and boss.boss_dead == False:
 
         # Movement input and after we verify the position of the player
-        player_input = input("Your movement (or quit the game) : ")
+        player_input = input("Your movement (or quit / save the game) : ")
         print("\n")
         
         old_x, old_y = player.position_x, player.position_y
@@ -57,6 +40,15 @@ def start_game(player):
             verify_object_and_player_position(player, list_objects)
             fight(player, list_monster)
             
+        elif player_input.lower() == "save":
+            save_data = {
+                "player": [player.to_dict()],
+                "monsters": [monster.to_dict() for monster in list_monster],
+                "objects": [obj.to_dict() for obj in list_objects]
+            }
+            save("save.json", save_data)
+            exit()
+            
         elif player_input.lower() == "quit":
             exit()
             
@@ -73,4 +65,19 @@ def start_game(player):
     if boss.boss_dead == True:
         print("YOU KILLED THE BOSS")
         print("Congratulation, you finish the game, you are a real adventurer ", player.name, " !")
-        launch_screen()
+
+def custom_serializer(obj):
+    if hasattr(obj, 'to_dict'):
+        return obj.to_dict()
+    return str(obj)  
+
+def save(file, data):
+    with open(file, "w") as f:
+        json.dump(data, f, indent=4, default=custom_serializer)
+    print("Save is created !")
+    
+def load(file):
+    with open(file, "r") as f:
+        return json.load(f)
+    
+    

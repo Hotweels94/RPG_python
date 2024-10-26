@@ -1,4 +1,3 @@
-import os
 from Classes.character import *
 from Classes.object import *
 from random import randint
