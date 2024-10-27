@@ -1,3 +1,5 @@
+from random import randrange
+
 class Character :
   def __init__(self, name, level, health, attack, defense, position_x, position_y, critic_hit_chance, critic_hit, miss_hit_chance):
     self.name = name
@@ -41,6 +43,67 @@ class Player (Character):
       "weapon_stat": self.weapon_stat
     }
     
+  # First choice in fight, the player attack his enemy
+  def attack_action(self, monster):
+    player_test = randrange(1,100)      
+    # Critic hit
+    if player_test < self.critic_hit_chance:
+        monster.health -= self.attack * self.critic_hit * self.weapon_stat - monster.defense
+        print("CRITIC HIT !")
+        print(monster.name, " has ", monster.health, " HP")
+        
+    # Miss
+    elif player_test > 100 - self.miss_hit_chance:
+        print("Oof, you miss !")
+        
+    # Normal hit
+    else:
+        monster.health -= self.attack * self.weapon_stat - monster.defense
+        print("You hit him !")
+        print(monster.name, " has ", monster.health, " HP")
+        
+    print("\n")
+    
+  # Second choice, he can use an object from his inventory
+  def use_inventory(self):
+    print("Your objects : \n")   
+    for obj in self.inventory:
+        print(obj.name) 
+        
+    player_input = input("Your choice (name of the object or quit) : ")
+    if player_input == "quit": 
+        print("You quit")
+        
+    selected_obj = None
+    for obj in self.inventory:
+        if obj.name == player_input:
+            selected_obj = obj
+            break
+    
+    # Player choice
+    if player_input != "quit":
+        if selected_obj:
+            selected_obj.use(self)
+            if player_input == "health potion":
+                print("You use your health_potion! You have: ", self.health, " HP")
+            elif player_input == "attack potion":
+                print("You use your attack_potion! You have: ", self.attack, " attack points")
+            elif player_input == "defense potion":
+                print("You use your defense_potion! You have: ", self.defense, " defense points")
+            self.inventory.remove(selected_obj)
+
+        else:
+            print("Invalid object name.")
+        print("\n")
+      
+  # Third option, he can run away
+  def run_away(self, monster):
+    print("You ran away !")
+    print("\n")
+    monster.run_away = True
+    monster.health = 0
+     
+  # Level up method if the player has more xp than he need to level up
   def level_up(self):
     print("YOU LEVEL UP ! You are level ", self.level, " You have better stats !")
     self.xp = 0

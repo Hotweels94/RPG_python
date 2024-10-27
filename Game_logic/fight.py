@@ -24,64 +24,15 @@ def fight(player, list_monster):
                 
                 # Player choose to fight
                 if player_input == "1":
-                    player_test = randrange(1,100)
-                    
-                    # Critic hit
-                    if player_test < player.critic_hit_chance:
-                        monster.health -= player.attack * player.critic_hit * player.weapon_stat - monster.defense
-                        print("CRITIC HIT !")
-                        print(monster.name, " has ", monster.health, " HP")
-                        
-                    # Miss
-                    elif player_test > 100 - player.miss_hit_chance:
-                        print("Oof, you miss !")
-                        
-                    # Normal hit
-                    else:
-                        monster.health -= player.attack * player.weapon_stat - monster.defense
-                        print("You hit him !")
-                        print(monster.name, " has ", monster.health, " HP")
-                        
-                    print("\n")
+                    player.attack_action(monster)
                 
                 # Player choose to use an object
                 elif player_input == "2":
-                    print("Your objects : \n")   
-                    for obj in player.inventory:
-                        print(obj.name) 
-                        
-                    player_input = input("Your choice (name of the object or quit) : ")
-                    if player_input == "quit": 
-                        print("You quit")
-                        
-                    selected_obj = None
-                    for obj in player.inventory:
-                        if obj.name == player_input:
-                            selected_obj = obj
-                            break
-                    
-                    # Player choice
-                    if player_input != "quit":
-                        if selected_obj:
-                            selected_obj.use(player)
-                            if player_input == "health potion":
-                                print("You use your health_potion! You have: ", player.health, " HP")
-                            elif player_input == "attack potion":
-                                print("You use your attack_potion! You have: ", player.attack, " attack points")
-                            elif player_input == "defense potion":
-                                print("You use your defense_potion! You have: ", player.defense, " defense points")
-                            player.inventory.remove(selected_obj)
-
-                        else:
-                            print("Invalid object name.")
-                        print("\n")
+                    player.use_inventory()
                 
                 # Player choose to run away
                 elif player_input == "3":
-                    print("You ran away !")
-                    print("\n")
-                    monster.run_away = True
-                    monster.health = 0
+                    player.run_away(monster)
                 
                 else: 
                     print("For next round, type 1, 2 or 3. Don't fail please ")

@@ -2,24 +2,54 @@
     "player": [
         {
             "name": "d",
-            "level": 2,
-            "xp": 20,
-            "max_xp": 150.0,
-            "level_multiplicator": 1.5,
-            "health": 110.0,
-            "attack": 15,
-            "defense": 8,
+            "level": 1,
+            "xp": 0,
+            "max_xp": 100,
+            "level_multiplicator": 1,
+            "health": 100,
+            "attack": 10,
+            "defense": 3,
             "inventory": [],
-            "position_x": 4,
-            "position_y": 4,
-            "critic_hit_chance": 12,
-            "critic_hit": 2.5,
-            "miss_hit_chance": 14,
+            "position_x": 3,
+            "position_y": 3,
+            "critic_hit_chance": 10,
+            "critic_hit": 2,
+            "miss_hit_chance": 15,
             "weapon": "knife",
             "weapon_stat": 1
         }
     ],
     "monsters": [
+        {
+            "name": "Wolf",
+            "level": 1,
+            "health": 50,
+            "attack": 5,
+            "defense": 2,
+            "position_x": 1,
+            "position_y": 1,
+            "critic_hit_chance": 10,
+            "critic_hit": 1.5,
+            "miss_hit_chance": 20,
+            "drop_xp": 150,
+            "run_away": false,
+            "special_hit": "Oh the wolf bite your head !!"
+        },
+        {
+            "name": "Wolf",
+            "level": 1,
+            "health": 50,
+            "attack": 5,
+            "defense": 2,
+            "position_x": 4,
+            "position_y": 4,
+            "critic_hit_chance": 10,
+            "critic_hit": 1.5,
+            "miss_hit_chance": 20,
+            "drop_xp": 20,
+            "run_away": false,
+            "special_hit": "Oh the wolf bite your head !!"
+        },
         {
             "name": "Wolf",
             "level": 1,
@@ -46,14 +76,14 @@
         {
             "name": "attack potion",
             "value": 10,
-            "position_x": 5,
-            "position_y": 5
+            "position_x": 3,
+            "position_y": 1
         },
         {
             "name": "defense potion",
             "value": 5,
-            "position_x": 5,
-            "position_y": 2
+            "position_x": 6,
+            "position_y": 3
         }
     ]
 }
