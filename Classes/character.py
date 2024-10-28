@@ -105,7 +105,6 @@ class Player (Character):
      
   # Level up method if the player has more xp than he need to level up
   def level_up(self):
-    print("YOU LEVEL UP ! You are level ", self.level, " You have better stats !")
     self.xp = 0
     self.level += 1
     self.level_multiplicator += 0.5
@@ -116,6 +115,7 @@ class Player (Character):
     self.critic_hit_chance += 2
     self.miss_hit_chance -= 1
     self.critic_hit += 0.5
+    print("YOU LEVEL UP ! You are level ", self.level, " You have better stats !")
     return True
 
 class Monster (Character):
