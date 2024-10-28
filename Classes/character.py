@@ -50,6 +50,8 @@ class Player (Character):
     if player_test < self.critic_hit_chance:
         monster.health -= self.attack * self.critic_hit * self.weapon_stat - monster.defense
         print("CRITIC HIT !")
+        if monster.health < 0:
+          monster.health = 0
         print(monster.name, " has ", monster.health, " HP")
         
     # Miss
@@ -60,6 +62,8 @@ class Player (Character):
     else:
         monster.health -= self.attack * self.weapon_stat - monster.defense
         print("You hit him !")
+        if monster.health < 0:
+          monster.health = 0
         print(monster.name, " has ", monster.health, " HP")
         
     print("\n")
@@ -115,7 +119,7 @@ class Player (Character):
     self.critic_hit_chance += 2
     self.miss_hit_chance -= 1
     self.critic_hit += 0.5
-    print("YOU LEVEL UP ! You are level ", self.level, " You have better stats !")
+    print("YOU LEVEL UP ! You are level ", self.level, " You have better stats ! \n")
     return True
 
 class Monster (Character):
