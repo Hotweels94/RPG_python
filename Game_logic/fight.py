@@ -25,6 +25,20 @@ def fight(player, list_monster):
                 # Player choose to fight
                 if player_input == "1":
                     player.attack_action(monster)
+                    
+                    # If the monster is dead we remove it of the list and give xp to the player
+                    if monster.health <= 0 and monster.run_away == False: 
+                        
+                        os.system('cls')
+                        list_monster.remove(monster)
+                        player.xp += monster.drop_xp
+                        print("YOU KILLED THE LEVEL ",monster.level, monster.name + "!")
+                        if type(monster) == Boss:
+                            monster.boss_dead = True
+                        
+                        # Player level up if he has enough xp
+                        while player.xp >= player.max_xp:
+                            player.level_up()
                 
                 # Player choose to use an object
                 elif player_input == "2":
@@ -32,44 +46,20 @@ def fight(player, list_monster):
                 
                 # Player choose to run away
                 elif player_input == "3":
-                    player.run_away(monster)
+                    if type(monster) != Boss:
+                        player.run_away(monster)
+                    else:
+                        print("You can't run away from this fight !")
                 
                 else: 
                     print("For next round, type 1, 2 or 3. Don't fail please ")
             
-                # The monster fight
-                monster_test = randrange(1,100)
-                
-                # Special hit
-                if monster_test < monster.critic_hit_chance:
-                    player.health -= monster.attack * monster.critic_hit - player.defense
-                    print(monster.special_hit)
-                    print("You have ", player.health, " HP")
-                    
-                # Miss
-                elif monster_test > 100 - monster.miss_hit_chance:
-                    print("Nice, ", monster.name, "doesn't hit you")
-                    print("You have ", player.health, " HP")
-                    
-                # Normal hit
+
+                # Monster's turn
+                if monster.health > 0:
+                    monster.monster_fight(player)
                 else:
-                    player.health -= monster.attack - player.defense
-                    print(monster.name, " hits you !")
-                    print("You have ", player.health, " HP")
-                    
-                print("\n")
-                
-            # If the monster is dead we remove it of the list and give xp to the player
-            if monster.health <= 0 and monster.run_away == False: 
-                
-                os.system('cls')
-                list_monster.remove(monster)
-                player.xp += monster.drop_xp
-                print("YOU KILL THE",monster.level, monster.name + "!")
-                
-                # Player level up if he has enough xp
-                if player.xp >= player.max_xp:
-                    player.level_up()
+                    print("hjgvfgghvfgcgfc")
                 
             # Player dead
             if player.health <= 0:

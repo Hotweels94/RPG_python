@@ -23,26 +23,6 @@ class Player (Character):
     self.weapon = "knife"
     self.weapon_stat = 1
     
-  def to_dict(self):
-    return {
-      "name": self.name,
-      "level": self.level,
-      "xp": self.xp,
-      "max_xp": self.max_xp,
-      "level_multiplicator": self.level_multiplicator,
-      "health": self.health,
-      "attack": self.attack,
-      "defense": self.defense,
-      "inventory": self.inventory,
-      "position_x": self.position_x,
-      "position_y": self.position_y,
-      "critic_hit_chance": self.critic_hit_chance,
-      "critic_hit": self.critic_hit,
-      "miss_hit_chance": self.miss_hit_chance,
-      "weapon": self.weapon,
-      "weapon_stat": self.weapon_stat
-    }
-    
   # First choice in fight, the player attack his enemy
   def attack_action(self, monster):
     player_test = randrange(1,100)      
@@ -109,7 +89,7 @@ class Player (Character):
      
   # Level up method if the player has more xp than he need to level up
   def level_up(self):
-    self.xp = 0
+    self.xp -= self.max_xp
     self.level += 1
     self.level_multiplicator += 0.5
     self.max_xp = self.max_xp * self.level_multiplicator
@@ -129,41 +109,30 @@ class Monster (Character):
     self.run_away = False
     self.special_hit = special_hit
     
-  def to_dict(self):
-    return {
-      "name": self.name,
-      "level": self.level,
-      "health": self.health,
-      "attack": self.attack,
-      "defense": self.defense,
-      "position_x": self.position_x,
-      "position_y": self.position_y,
-      "critic_hit_chance": self.critic_hit_chance,
-      "critic_hit": self.critic_hit,
-      "miss_hit_chance": self.miss_hit_chance,
-      "drop_xp": self.drop_xp,
-      "run_away": self.run_away,
-      "special_hit": self.special_hit
-    }
+  # The monster fight
+  def monster_fight(self, player):
+    monster_test = randrange(1,100)
+    
+    # Special hit
+    if monster_test < self.critic_hit_chance:
+        player.health -= self.attack * self.critic_hit - player.defense
+        print(self.special_hit)
+        print("You have ", player.health, " HP")
+        
+    # Miss
+    elif monster_test > 100 - self.miss_hit_chance:
+        print("Nice, ", self.name, "doesn't hit you")
+        print("You have ", player.health, " HP")
+        
+    # Normal hit
+    else:
+        player.health -= self.attack - player.defense
+        print(self.name, " hits you !")
+        print("You have ", player.health, " HP")
+        
+    print("\n")
 
 class Boss (Monster):
   def __init__(self, name, level, health, attack, defense, position_x, position_y, critic_hit_chance, critic_hit, miss_hit, drop_xp, special_hit):
     super().__init__(name,level, health, attack, defense, position_x, position_y, critic_hit_chance, critic_hit, miss_hit, drop_xp, special_hit)
     self.boss_dead = False
-    
-  def to_dict(self):
-    return {
-      "name": self.name,
-      "level": self.level,
-      "health": self.health,
-      "attack": self.attack,
-      "defense": self.defense,
-      "position_x": self.position_x,
-      "position_y": self.position_y,
-      "critic_hit_chance": self.critic_hit_chance,
-      "critic_hit": self.critic_hit,
-      "miss_hit_chance": self.miss_hit_chance,
-      "drop_xp": self.drop_xp,
-      "special_hit": self.special_hit,
-      "boss_dead": self.boss_dead
-    }

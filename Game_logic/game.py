@@ -1,12 +1,12 @@
 from Game_logic.map import *
 from Game_logic.fight import *
 from random import randint
-from Game_logic.data import *
+from Game_logic.data import boss
+from Game_logic.save import save
 import os
-import json
 
 # Func to start the game
-def start_game(player):
+def start_game(player, list_monster, list_objects):
     
     os.system('cls')
     print("Ok ", player.name ," You are in the middle of a forest, what do you want to do ? ")
@@ -41,12 +41,7 @@ def start_game(player):
             fight(player, list_monster)
             
         elif player_input.lower() == "save":
-            save_data = {
-                "player": [player.to_dict()],
-                "monsters": [monster.to_dict() for monster in list_monster],
-                "objects": [obj.to_dict() for obj in list_objects]
-            }
-            save("save.json", save_data)
+            save(player, list_monster, list_objects)
             exit()
             
         elif player_input.lower() == "quit":
@@ -65,19 +60,4 @@ def start_game(player):
     if boss.boss_dead == True:
         print("YOU KILLED THE BOSS")
         print("Congratulation, you finish the game, you are a real adventurer ", player.name, " !")
-
-def custom_serializer(obj):
-    if hasattr(obj, 'to_dict'):
-        return obj.to_dict()
-    return str(obj)  
-
-def save(file, data):
-    with open(file, "w") as f:
-        json.dump(data, f, indent=4, default=custom_serializer)
-    print("Save is created !")
-    
-def load(file):
-    with open(file, "r") as f:
-        return json.load(f)
-    
-    
+        exit()

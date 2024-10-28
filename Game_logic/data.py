@@ -25,4 +25,4 @@ list_monster = [
     Monster("Wolf",1, 50, 5, 2, 5,5, 10, 1.5, 20, 70, "Oh the wolf bite your head !!")
 ]
 
-
+list_monster.append(boss)
