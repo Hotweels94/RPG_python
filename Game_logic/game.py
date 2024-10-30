@@ -16,7 +16,7 @@ def start_game(player, list_monster, list_objects):
     while player.health > 0 and boss.boss_dead == False:
 
         # Movement input and after we verify the position of the player
-        player_input = input("Your movement (or quit / save the game) : ")
+        player_input = input("Your decision (move, map, save or quit) : ")
         print("\n")
         
         old_x, old_y = player.position_x, player.position_y
