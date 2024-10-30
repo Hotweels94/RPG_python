@@ -31,6 +31,14 @@ def verify_object_and_player_position(player, list_objects):
             print("YOU'VE FOUND AN OBJECT ! :", obj.name)
             list_objects.remove(obj)
             break 
+        
+def verify_weapon_and_player_position(player, list_weapon):
+    for wea in list_weapon:
+        if player.position_x == wea.position_x and player.position_y == wea.position_y:
+            player.weapon.append(wea)
+            print("YOU'VE FOUND A WEAPON ! :", wea.name)
+            list_weapon.remove(wea)
+            break 
 
 def random_position_without_exclude_coordinates(forbidden_coords):
     while True:
@@ -38,3 +46,13 @@ def random_position_without_exclude_coordinates(forbidden_coords):
         y = randint(0, 6)
         if (x, y) not in forbidden_coords:
             return (x, y)
+        
+def show_map(player):
+    for y in range(0, 7):
+        for x in range(0, 7):
+            if player.position_x == x and player.position_y == y:
+                print("o", end=" ")
+            else:
+                print(".", end=" ")
+        print()
+    print("\n")

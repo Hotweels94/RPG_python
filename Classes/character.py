@@ -20,27 +20,39 @@ class Character :
 class Player (Character):
   def __init__(self, name):
     super().__init__(name, 1, 100, 10, 3, 3, 3, 10, 2, 15)
-    self.weapon = "knife"
-    self.weapon_stat = 1
+    self.weapon = []
     
   # First choice in fight, the player attack his enemy
   def attack_action(self, monster):
+    
+    print("Your weapons : \n")
+    for wea in self.weapon:
+      print(wea.name, ": Stat : ", wea.stat , " Miss chance more stat : ", wea.miss_chance_hit, " Critic chance more stat : ", wea.critic_chance_hit)
+    
+    player_weapon_choice = input("Name of your weapon : ")
+    
+    selected_weapon = None
+    for wea in self.weapon:
+      if wea.name == player_weapon_choice:
+        selected_weapon = wea
+        break
+    
     player_test = randrange(1,100)      
     # Critic hit
-    if player_test < self.critic_hit_chance:
-        monster.health -= self.attack * self.critic_hit * self.weapon_stat - monster.defense
+    if player_test < selected_weapon.critic_chance_hit + self.critic_hit_chance:
+        monster.health -= self.attack * self.critic_hit * selected_weapon.stat - monster.defense
         print("CRITIC HIT !")
         if monster.health < 0:
           monster.health = 0
         print(monster.name, " has ", monster.health, " HP")
         
     # Miss
-    elif player_test > 100 - self.miss_hit_chance:
+    elif player_test > 100 - (selected_weapon.miss_chance_hit + self.miss_hit_chance):
         print("Oof, you miss !")
         
     # Normal hit
     else:
-        monster.health -= self.attack * self.weapon_stat - monster.defense
+        monster.health -= self.attack * selected_weapon.stat - monster.defense
         print("You hit him !")
         if monster.health < 0:
           monster.health = 0

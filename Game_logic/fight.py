@@ -15,7 +15,7 @@ def fight(player, list_monster):
             # While both are alive
             while player.health > 0 and monster.health > 0:
                 print("What do you want to do ? \n")
-                print("1. You can attack with your weapon : ", player.weapon)
+                print("1. You can attack with on of your weapons")
                 print("2. You can use an object from your inventory")
                 print("3. Or you can run away (the monster will diseapear but you will don't win any xp)")
                 
@@ -58,8 +58,6 @@ def fight(player, list_monster):
                 # Monster's turn
                 if monster.health > 0:
                     monster.monster_fight(player)
-                else:
-                    print("hjgvfgghvfgcgfc")
                 
             # Player dead
             if player.health <= 0:

@@ -1,7 +1,7 @@
 from Game_logic.map import *
 from Game_logic.fight import *
 from random import randint
-from Game_logic.data import boss
+from Game_logic.data import boss, list_weapon
 from Game_logic.save import save
 import os
 
@@ -10,7 +10,8 @@ def start_game(player, list_monster, list_objects):
     
     os.system('cls')
     print("Ok ", player.name ," You are in the middle of a forest, what do you want to do ? ")
-    
+    player.weapon.append(list_weapon[0])
+
     # While the player AND the boss are alive
     while player.health > 0 and boss.boss_dead == False:
 
@@ -23,21 +24,25 @@ def start_game(player, list_monster, list_objects):
         if player_input.lower() == "up":
             player.position_y -= 1
             verify_object_and_player_position(player, list_objects)
+            verify_weapon_and_player_position(player, list_weapon)
             fight(player, list_monster)
             
         elif player_input.lower() == "down":
             player.position_y += 1
             verify_object_and_player_position(player, list_objects)
+            verify_weapon_and_player_position(player, list_weapon)
             fight(player, list_monster)
             
         elif player_input.lower() == "right":
             player.position_x += 1
             verify_object_and_player_position(player, list_objects)
+            verify_weapon_and_player_position(player, list_weapon)
             fight(player, list_monster)
             
         elif player_input.lower() == "left":
             player.position_x -= 1
             verify_object_and_player_position(player, list_objects)
+            verify_weapon_and_player_position(player, list_weapon)
             fight(player, list_monster)
             
         elif player_input.lower() == "save":
@@ -46,6 +51,9 @@ def start_game(player, list_monster, list_objects):
             
         elif player_input.lower() == "quit":
             exit()
+            
+        elif player_input.lower() == "map":
+            show_map(player)
             
         else:
             print("Please enter a good direction")
