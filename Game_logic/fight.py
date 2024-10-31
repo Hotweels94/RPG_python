@@ -61,7 +61,6 @@ def fight(player, list_monster):
                 
             # Player dead
             if player.health <= 0:
-                os.system('cls')
                 print("YOU ARE DEAD !!")
                 print("Game Over")
                 exit()

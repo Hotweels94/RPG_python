@@ -1,16 +1,17 @@
 from Game_logic.map import *
 from Game_logic.fight import *
 from random import randint
-from Game_logic.data import boss, list_weapon
+from Game_logic.data import boss
 from Game_logic.save import save
 import os
 
 # Func to start the game
-def start_game(player, list_monster, list_objects):
+def start_game(player, list_monster, list_objects, list_weapon):
     
     os.system('cls')
     print("Ok ", player.name ," You are in the middle of a forest, what do you want to do ? ")
-    player.weapon.append(list_weapon[0])
+    if not player.weapon:
+        player.weapon.append(list_weapon[0])
 
     # While the player AND the boss are alive
     while player.health > 0 and boss.boss_dead == False:
@@ -46,7 +47,7 @@ def start_game(player, list_monster, list_objects):
             fight(player, list_monster)
             
         elif player_input.lower() == "save":
-            save(player, list_monster, list_objects)
+            save(player, list_monster, list_objects, list_weapon)
             exit()
             
         elif player_input.lower() == "quit":

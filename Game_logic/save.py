@@ -1,12 +1,13 @@
 import pickle
 
 # Function to save the game with pickle
-def save(player, list_monster, list_objects, file="save.pkl"):
+def save(player, list_monster, list_objects, list_weapon, file="save.pkl"):
     with open(file, "wb") as f:
         pickle.dump({
             "player": player,
             "monsters": list_monster,
-            "objects": list_objects
+            "objects": list_objects,
+            "weapon": list_weapon
         }, f)
     print("Game Save !")
     exit()
@@ -19,8 +20,9 @@ def load(file="save.pkl"):
             player = data["player"]
             list_monster = data["monsters"]
             list_objects = data["objects"]
+            list_weapon = data["weapon"]
             print("Game loaded successfully!")
-            return player, list_monster, list_objects
+            return player, list_monster, list_objects, list_weapon
     except FileNotFoundError:
         print("No save file found.")
         return None, None, None
