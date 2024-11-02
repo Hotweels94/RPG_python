@@ -32,7 +32,9 @@ def fight(player, list_monster):
                         os.system('cls')
                         list_monster.remove(monster)
                         player.xp += monster.drop_xp
+                        player.gold += monster.gold
                         print("YOU KILLED THE LEVEL ",monster.level, monster.name + "!")
+                        print("You win : ", monster.gold, " gold coins !")
                         if type(monster) == Boss:
                             monster.boss_dead = True
                         

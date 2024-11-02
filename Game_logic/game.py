@@ -6,7 +6,7 @@ from Game_logic.save import save
 import os
 
 # Func to start the game
-def start_game(player, list_monster, list_objects, list_weapon):
+def start_game(player, list_monster, list_objects, list_weapon, list_event):
     
     os.system('cls')
     print("Ok ", player.name ," You are in the middle of a forest, what do you want to do ? ")
@@ -26,28 +26,32 @@ def start_game(player, list_monster, list_objects, list_weapon):
             player.position_y -= 1
             verify_object_and_player_position(player, list_objects)
             verify_weapon_and_player_position(player, list_weapon)
+            verify_event_and_player_position(player, list_event)
             fight(player, list_monster)
             
         elif player_input.lower() == "down":
             player.position_y += 1
             verify_object_and_player_position(player, list_objects)
             verify_weapon_and_player_position(player, list_weapon)
+            verify_event_and_player_position(player, list_event)
             fight(player, list_monster)
             
         elif player_input.lower() == "right":
             player.position_x += 1
             verify_object_and_player_position(player, list_objects)
             verify_weapon_and_player_position(player, list_weapon)
+            verify_event_and_player_position(player, list_event)
             fight(player, list_monster)
             
         elif player_input.lower() == "left":
             player.position_x -= 1
             verify_object_and_player_position(player, list_objects)
             verify_weapon_and_player_position(player, list_weapon)
+            verify_event_and_player_position(player, list_event)
             fight(player, list_monster)
             
         elif player_input.lower() == "save":
-            save(player, list_monster, list_objects, list_weapon)
+            save(player, list_monster, list_objects, list_weapon, list_event)
             exit()
             
         elif player_input.lower() == "quit":
@@ -65,6 +69,11 @@ def start_game(player, list_monster, list_objects, list_weapon):
             player.position_x, player.position_y = old_x, old_y
             print("You hit a Wall, you don't move of your case and please choose another direction")
             print("You are on x : ", player.position_x, " y : ", player.position_y)
+            
+    if player.health <= 0:
+        print("YOU ARE DEAD !!")
+        print("Game Over")
+        exit()
     
     if boss.boss_dead == True:
         print("YOU KILLED THE BOSS")

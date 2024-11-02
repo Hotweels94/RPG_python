@@ -1,7 +1,7 @@
 from random import randrange
 
 class Character :
-  def __init__(self, name, level, health, attack, defense, position_x, position_y, critic_hit_chance, critic_hit, miss_hit_chance):
+  def __init__(self, name, level, health, attack, defense, position_x, position_y, critic_hit_chance, critic_hit, miss_hit_chance, gold):
     self.name = name
     self.level = level
     self.xp = 0
@@ -16,10 +16,11 @@ class Character :
     self.critic_hit_chance = critic_hit_chance
     self.critic_hit = critic_hit
     self.miss_hit_chance = miss_hit_chance
+    self.gold = gold
 
 class Player (Character):
   def __init__(self, name):
-    super().__init__(name, 1, 100, 10, 3, 3, 3, 10, 2, 15)
+    super().__init__(name, 1, 100, 10, 3, 3, 3, 10, 2, 15, 0)
     self.weapon = []
     
   # First choice in fight, the player attack his enemy
@@ -116,8 +117,8 @@ class Player (Character):
     return True
 
 class Monster (Character):
-  def __init__(self, name, level, health, attack, defense, position_x, position_y, critic_hit_chance, critic_hit, miss_hit, drop_xp, special_hit):
-    super().__init__(name,level, health, attack, defense, position_x, position_y, critic_hit_chance, critic_hit, miss_hit)
+  def __init__(self, name, level, health, attack, defense, position_x, position_y, critic_hit_chance, critic_hit, miss_hit, gold, drop_xp, special_hit):
+    super().__init__(name,level, health, attack, defense, position_x, position_y, critic_hit_chance, critic_hit, miss_hit, gold)
     self.drop_xp = drop_xp 
     self.run_away = False
     self.special_hit = special_hit
@@ -146,6 +147,6 @@ class Monster (Character):
     print("\n")
 
 class Boss (Monster):
-  def __init__(self, name, level, health, attack, defense, position_x, position_y, critic_hit_chance, critic_hit, miss_hit, drop_xp, special_hit):
-    super().__init__(name,level, health, attack, defense, position_x, position_y, critic_hit_chance, critic_hit, miss_hit, drop_xp, special_hit)
+  def __init__(self, name, level, health, attack, defense, position_x, position_y, critic_hit_chance, critic_hit, miss_hit, gold, drop_xp, special_hit):
+    super().__init__(name,level, health, attack, defense, position_x, position_y, critic_hit_chance, critic_hit, miss_hit, gold ,drop_xp, special_hit)
     self.boss_dead = False

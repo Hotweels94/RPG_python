@@ -1,5 +1,3 @@
-from Classes.character import *
-from Classes.object import *
 from random import randint
 
 # Verify position of the player on the map
@@ -38,6 +36,13 @@ def verify_weapon_and_player_position(player, list_weapon):
             player.weapon.append(wea)
             print("YOU'VE FOUND A WEAPON ! :", wea.name)
             list_weapon.remove(wea)
+            break 
+      
+def verify_event_and_player_position(player, list_event):
+    for eve in list_event:
+        if player.position_x == eve.position_x and player.position_y == eve.position_y:
+            eve.event_effect(player)
+            list_event.remove(eve)
             break 
 
 def random_position_without_exclude_coordinates(forbidden_coords):
