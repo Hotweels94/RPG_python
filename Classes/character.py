@@ -25,7 +25,8 @@ class Player (Character):
   # First choice in fight, the player attack his enemy
   def attack_action(self, monster):
     
-    print("Your weapons : \n")
+    print("Your weapons :")
+    print("\n")
     for wea in self.weapon:
       print(wea.name, ": Stat : ", wea.stat , " Miss chance more stat : ", wea.miss_chance_hit, " Critic chance more stat : ", wea.critic_chance_hit)
     
@@ -83,9 +84,9 @@ class Player (Character):
             if player_input == "health potion":
                 print("You use your health_potion! You have: ", self.health, " HP")
             elif player_input == "attack potion":
-                print("You use your attack_potion! You have: ", self.attack, " attack points")
+                print("You use your attack_potion! You have: ", self.attack, " attack points more")
             elif player_input == "defense potion":
-                print("You use your defense_potion! You have: ", self.defense, " defense points")
+                print("You use your defense_potion! You have: ", self.defense, " defense points more")
             self.inventory.remove(selected_obj)
 
         else:
