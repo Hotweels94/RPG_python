@@ -20,7 +20,7 @@ class Character :
 
 class Player (Character):
   def __init__(self, name):
-    super().__init__(name, 1, 100, 10, 3, 3, 3, 10, 2, 15, 0)
+    super().__init__(name, 1, 100, 10, 3, 3, 3, 10, 2, 15, 50)
     self.weapon = []
     
   # First choice in fight, the player attack his enemy

@@ -1,10 +1,10 @@
 class Object:
-    
-    def __init__(self, name, value, position_x, position_y):
+    def __init__(self, name, value, position_x, position_y, price):
         self.name = name
         self.value = value
         self.position_x = position_x
         self.position_y = position_y
+        self.price = price
         
     def Use(self, Player):
         pass

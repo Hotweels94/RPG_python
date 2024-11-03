@@ -44,6 +44,12 @@ def verify_event_and_player_position(player, list_event):
             eve.event_effect(player)
             list_event.remove(eve)
             break 
+        
+def verify_map_and_player_position(player, list_shop):
+    for shop in list_shop:
+        if player.position_x == shop.position_x and player.position_y == shop.position_y:
+            shop.shop_sell(player)
+            break 
 
 def random_position_without_exclude_coordinates(forbidden_coords):
     while True:

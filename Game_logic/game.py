@@ -6,7 +6,7 @@ from Game_logic.save import save
 import os
 
 # Func to start the game
-def start_game(player, list_monster, list_objects, list_weapon, list_event):
+def start_game(player, list_monster, list_objects, list_weapon, list_event, list_shop):
     
     os.system('cls')
     print("Ok ", player.name ," You are in the middle of a forest, what do you want to do ? ")
@@ -27,6 +27,7 @@ def start_game(player, list_monster, list_objects, list_weapon, list_event):
             verify_object_and_player_position(player, list_objects)
             verify_weapon_and_player_position(player, list_weapon)
             verify_event_and_player_position(player, list_event)
+            verify_map_and_player_position(player, list_shop)
             fight(player, list_monster)
             
         elif player_input.lower() == "down":
@@ -34,6 +35,7 @@ def start_game(player, list_monster, list_objects, list_weapon, list_event):
             verify_object_and_player_position(player, list_objects)
             verify_weapon_and_player_position(player, list_weapon)
             verify_event_and_player_position(player, list_event)
+            verify_map_and_player_position(player, list_shop)
             fight(player, list_monster)
             
         elif player_input.lower() == "right":
@@ -41,6 +43,7 @@ def start_game(player, list_monster, list_objects, list_weapon, list_event):
             verify_object_and_player_position(player, list_objects)
             verify_weapon_and_player_position(player, list_weapon)
             verify_event_and_player_position(player, list_event)
+            verify_map_and_player_position(player, list_shop)
             fight(player, list_monster)
             
         elif player_input.lower() == "left":
@@ -48,10 +51,11 @@ def start_game(player, list_monster, list_objects, list_weapon, list_event):
             verify_object_and_player_position(player, list_objects)
             verify_weapon_and_player_position(player, list_weapon)
             verify_event_and_player_position(player, list_event)
+            verify_map_and_player_position(player, list_shop)
             fight(player, list_monster)
             
         elif player_input.lower() == "save":
-            save(player, list_monster, list_objects, list_weapon, list_event)
+            save(player, list_monster, list_objects, list_weapon, list_event, list_shop)
             exit()
             
         elif player_input.lower() == "quit":

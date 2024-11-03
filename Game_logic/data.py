@@ -2,6 +2,7 @@ from Classes.character import *
 from Classes.object import *
 from Classes.weapon import *
 from Classes.event import *
+from Classes.shop import *
 from Game_logic.map import random_position_without_exclude_coordinates
 
 # Creation of the player
@@ -15,12 +16,12 @@ boss = Boss("Dragon",10,1000,50,20,0,0,25,4,25, 0, 1000, "WoW, The dragon burned
 
 # Creation of all of the objects
 list_objects = [
-    health_potion("health potion", 10, *random_position_without_exclude_coordinates(forbidden_coords)),
-    health_potion("health potion", 10, *random_position_without_exclude_coordinates(forbidden_coords)),
-    attack_potion("attack potion", 10, *random_position_without_exclude_coordinates(forbidden_coords)),
-    attack_potion("attack potion", 10, *random_position_without_exclude_coordinates(forbidden_coords)),
-    defense_potion("defense potion", 5, *random_position_without_exclude_coordinates(forbidden_coords)),
-    defense_potion("defense potion", 5, *random_position_without_exclude_coordinates(forbidden_coords))
+    health_potion("health potion", 10, *random_position_without_exclude_coordinates(forbidden_coords), 0),
+    health_potion("health potion", 10, *random_position_without_exclude_coordinates(forbidden_coords), 0),
+    attack_potion("attack potion", 10, *random_position_without_exclude_coordinates(forbidden_coords), 0),
+    attack_potion("attack potion", 10, *random_position_without_exclude_coordinates(forbidden_coords), 0),
+    defense_potion("defense potion", 5, *random_position_without_exclude_coordinates(forbidden_coords), 0),
+    defense_potion("defense potion", 5, *random_position_without_exclude_coordinates(forbidden_coords), 0)
 ]
 
 # Creation of all of the monsters
@@ -33,10 +34,10 @@ list_monster = [
 
 # Creation of all of the weapons
 list_weapon = [
-    Weapon("knife", 1, 0, 0, -1, -1),
-    Weapon("sword", 1.5, 2, 3, *random_position_without_exclude_coordinates(forbidden_coords)),
-    Weapon("bow", 1.7, 10, 12, *random_position_without_exclude_coordinates(forbidden_coords)),
-    Weapon("axe", 1.8, 10, 15, *random_position_without_exclude_coordinates(forbidden_coords))
+    Weapon("knife", 1, 0, 0, -1, -1, 0),
+    Weapon("sword", 1.5, 2, 3, *random_position_without_exclude_coordinates(forbidden_coords), 0),
+    Weapon("bow", 1.7, 10, 12, *random_position_without_exclude_coordinates(forbidden_coords), 0),
+    Weapon("axe", 1.8, 10, 15, *random_position_without_exclude_coordinates(forbidden_coords), 0)
 ]
 
 list_monster.append(boss)
@@ -45,4 +46,13 @@ list_event = [
     Thunder(5, 3, 4),
     Trap(15, 3, 5),
     Found_gold(25, 3, 6)
+]
+
+list_potion_shop = [
+    health_potion("health potion", 10, -1, -1, 10),
+    attack_potion("attack potion", 10, -1, -1, 20)
+]
+
+list_shop = [
+    PotionShop(list_potion_shop, 5, 5)
 ]
