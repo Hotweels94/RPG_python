@@ -8,8 +8,8 @@ from Game_logic.map import random_position_without_exclude_coordinates
 # Creation of the player
 player = Player("")
 
-# Spawn coordinates of player and boss. It's forbidden because nothing spawn on their cases
-forbidden_coords = [(3, 3), (0, 0)]
+# Spawn coordinates of player, boss and shops. It's forbidden because nothing spawn on their cases
+forbidden_coords = [(3, 3), (0, 0), (5, 5), (2, 2)]
 
 # Creation of the boss
 boss = Boss("Dragon",10,1000,50,20,0,0,25,4,25, 0, 1000, "WoW, The dragon burned you !! ")
@@ -43,9 +43,9 @@ list_weapon = [
 list_monster.append(boss)
 
 list_event = [
-    Thunder(5, 3, 4),
-    Trap(15, 3, 5),
-    Found_gold(25, 3, 6)
+    Thunder(5, *random_position_without_exclude_coordinates(forbidden_coords)),
+    Trap(15, *random_position_without_exclude_coordinates(forbidden_coords)),
+    Found_gold(25, *random_position_without_exclude_coordinates(forbidden_coords))
 ]
 
 list_potion_shop = [
@@ -53,6 +53,12 @@ list_potion_shop = [
     attack_potion("attack potion", 10, -1, -1, 20)
 ]
 
+list_weapon_shop = [
+    Weapon("katana", 1.6, 3, 3, -1, -1, 20),
+    Weapon("Dagger", 2, 20, 25, -1, -1, 60)
+]
+
 list_shop = [
-    PotionShop(list_potion_shop, 5, 5)
+    PotionShop(list_potion_shop, 5, 5),
+    WeaponShop(list_weapon_shop, 2, 2)
 ]

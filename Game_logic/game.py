@@ -16,7 +16,7 @@ def start_game(player, list_monster, list_objects, list_weapon, list_event, list
     # While the player AND the boss are alive
     while player.health > 0 and boss.boss_dead == False:
 
-        # Movement input and after we verify the position of the player
+        # Player input and after we verify the position of the player
         player_input = input("Your decision (move, map, save or quit) : ")
         print("\n")
         

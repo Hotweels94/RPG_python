@@ -15,10 +15,10 @@ class health_potion (Object):
 
 class attack_potion (Object):
   def use(self,Player):
-    Player.attack += self.value
+    Player.temp_attack += self.value
 
 class defense_potion (Object):
   def use(self,Player):
-    Player.defense += self.value
+    Player.temp_defense += self.value
     
         

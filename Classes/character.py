@@ -22,6 +22,8 @@ class Player (Character):
   def __init__(self, name):
     super().__init__(name, 1, 100, 10, 3, 3, 3, 10, 2, 15, 50)
     self.weapon = []
+    self.temp_attack = 0
+    self.temp_defense = 0
     
   # First choice in fight, the player attack his enemy
   def attack_action(self, monster):
@@ -42,7 +44,7 @@ class Player (Character):
     player_test = randrange(1,100)      
     # Critic hit
     if player_test < selected_weapon.critic_chance_hit + self.critic_hit_chance:
-        monster.health -= self.attack * self.critic_hit * selected_weapon.stat - monster.defense
+        monster.health -= ( self.attack + self.temp_attack ) * self.critic_hit * selected_weapon.stat - monster.defense
         print("CRITIC HIT !")
         if monster.health < 0:
           monster.health = 0
@@ -54,7 +56,7 @@ class Player (Character):
         
     # Normal hit
     else:
-        monster.health -= self.attack * selected_weapon.stat - monster.defense
+        monster.health -= ( self.attack + self.temp_attack ) * selected_weapon.stat - monster.defense
         print("You hit him !")
         if monster.health < 0:
           monster.health = 0
@@ -129,7 +131,7 @@ class Monster (Character):
     
     # Special hit
     if monster_test < self.critic_hit_chance:
-        player.health -= self.attack * self.critic_hit - player.defense
+        player.health -= self.attack * self.critic_hit - ( player.defense + player.temp_defense)
         print(self.special_hit)
         print("You have ", player.health, " HP")
         
@@ -140,7 +142,7 @@ class Monster (Character):
         
     # Normal hit
     else:
-        player.health -= self.attack - player.defense
+        player.health -= self.attack - ( player.defense + player.temp_defense)
         print(self.name, " hits you !")
         print("You have ", player.health, " HP")
         
