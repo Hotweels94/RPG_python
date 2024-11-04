@@ -17,7 +17,7 @@ def fight(player, list_monster):
                 print("What do you want to do ? \n")
                 print("1. You can attack with on of your weapons")
                 print("2. You can use an object from your inventory")
-                print("3. Or you can run away (the monster will diseapear but you will don't win any xp)")
+                print("3. Or you can run away")
                 
                 player_input = input("Your choice (1, 2 or 3) : ")
                 print("\n")
@@ -52,11 +52,13 @@ def fight(player, list_monster):
                 elif player_input == "3":
                     if type(monster) != Boss:
                         player.run_away(monster)
+                        break
                     else:
                         print("You can't run away from this fight !")
                 
                 else: 
                     print("For next round, type 1, 2 or 3. Don't fail please ")
+                    continue
             
 
                 # Monster's turn
@@ -68,8 +70,4 @@ def fight(player, list_monster):
                 print("YOU ARE DEAD !!")
                 print("Game Over")
                 exit()
-                 
-            # if the player choose to run away
-            if monster.run_away == True and monster.health <= 0:
-                list_monster.remove(monster)
-            break 
+            break
