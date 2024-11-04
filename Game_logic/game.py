@@ -27,7 +27,7 @@ def start_game(player, list_monster, list_objects, list_weapon, list_event, list
             verify_object_and_player_position(player, list_objects)
             verify_weapon_and_player_position(player, list_weapon)
             verify_event_and_player_position(player, list_event)
-            verify_map_and_player_position(player, list_shop)
+            verify_shop_and_player_position(player, list_shop)
             fight(player, list_monster)
             
         elif player_input.lower() == "down":
@@ -35,7 +35,7 @@ def start_game(player, list_monster, list_objects, list_weapon, list_event, list
             verify_object_and_player_position(player, list_objects)
             verify_weapon_and_player_position(player, list_weapon)
             verify_event_and_player_position(player, list_event)
-            verify_map_and_player_position(player, list_shop)
+            verify_shop_and_player_position(player, list_shop)
             fight(player, list_monster)
             
         elif player_input.lower() == "right":
@@ -43,7 +43,7 @@ def start_game(player, list_monster, list_objects, list_weapon, list_event, list
             verify_object_and_player_position(player, list_objects)
             verify_weapon_and_player_position(player, list_weapon)
             verify_event_and_player_position(player, list_event)
-            verify_map_and_player_position(player, list_shop)
+            verify_shop_and_player_position(player, list_shop)
             fight(player, list_monster)
             
         elif player_input.lower() == "left":
@@ -51,7 +51,7 @@ def start_game(player, list_monster, list_objects, list_weapon, list_event, list
             verify_object_and_player_position(player, list_objects)
             verify_weapon_and_player_position(player, list_weapon)
             verify_event_and_player_position(player, list_event)
-            verify_map_and_player_position(player, list_shop)
+            verify_shop_and_player_position(player, list_shop)
             fight(player, list_monster)
             
         elif player_input.lower() == "save":

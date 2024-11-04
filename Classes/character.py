@@ -118,9 +118,6 @@ class Player (Character):
 
 
 
-
-
-
 class Monster (Character):
   def __init__(self, name, level, health, attack, defense, position_x, position_y, critic_hit_chance, critic_hit, miss_hit, gold, drop_xp, special_hit):
     super().__init__(name,level, health, attack, defense, position_x, position_y, critic_hit_chance, critic_hit, miss_hit, gold)

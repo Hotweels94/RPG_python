@@ -7,6 +7,7 @@ class Event:
     def event_effect(self, Player):
         pass
     
+#Creation of the event subclass with their effect 
     
 class Thunder (Event):
     def event_effect(self, Player):

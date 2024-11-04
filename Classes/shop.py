@@ -9,6 +9,7 @@ class Shop():
     
 class PotionShop(Shop):
     
+    # Function of the shop when the player is on the shop case
     def shop_sell(self, player):
         print("Welcome to the potion shop! Here's what we have in stock:")
         for index, obj in enumerate(self.list_objects_shop, start=1):
@@ -40,6 +41,7 @@ class PotionShop(Shop):
 
 class WeaponShop(Shop):
     
+    # Function of the shop when the player is on the shop case
     def shop_sell(self, player):
         print("Welcome to the weapon shop! Here's what we have in stock:")
         for index, obj in enumerate(self.list_objects_shop, start=1):
