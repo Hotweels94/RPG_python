@@ -27,7 +27,7 @@ def fight(player, list_monster):
                     player.attack_action(monster)
                     
                     # If the monster is dead we remove it of the list and give xp to the player
-                    if monster.health <= 0 and monster.run_away == False: 
+                    if monster.health <= 0: 
                         
                         os.system('cls')
                         list_monster.remove(monster)
