@@ -18,6 +18,7 @@ To launch the game, you need to clone that repository or download it directly, a
 
 ## Movements
 To move in the game, you just need to type the direction where you want to go : "left" "right" "up" "down".
+
 ![movement menu](https://github.com/user-attachments/assets/787a9dc2-ba6a-4d7c-9b61-2cc03511434f)
 
 ## Fights
