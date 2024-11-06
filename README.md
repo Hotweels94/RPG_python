@@ -84,5 +84,5 @@ Weapon shop : x: 2, y: 2
 Potion shop : x: 5, y: 5
 
 
-## Authors
+## Author
 - [@Hotweels94](https://github.com/Hotweels94)
