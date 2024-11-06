@@ -18,13 +18,26 @@ To launch the game, you need to clone that repository or download it directly, a
 
 ## Movements
 To move in the game, you just need to type the direction where you want to go : "left" "right" "up" "down".
+![movement menu](https://github.com/user-attachments/assets/787a9dc2-ba6a-4d7c-9b61-2cc03511434f)
 
 ## Fights
 When you move, randomly, you can find a monster. The monsters can spawn everywhere in the map execpt on player spawn, boss spawn, and shops locations.
 If you find a monster, the fight begins. You can the see the name of the monster and his level.
+
+![fight](https://github.com/user-attachments/assets/fb0170ff-75d2-441c-96e4-712eb925f190)
+
+
 Now you have 3 options
 * You can attack, a new panel is open and you can choose with which weapon you want to attack him. All weapons have different stats. When you attack you can : Have a critic hit, normal hit or you can miss him. The different weapon influence all of your stats so it's a important decision. You need to type the name of the weapon to use it.
+
+![weapon](https://github.com/user-attachments/assets/46445edb-21b4-4be4-9888-d53a7bac099e)
+
+
 * You can use an object, a new panel is open and you can choose which potion (from your inventory) you want to drink. You need to type the name of the potion to use it.
+
+![inventory_fight](https://github.com/user-attachments/assets/c4d94b4a-af9d-4ac2-b6fe-1e3549b11eac)
+
+
 * You can run away and leave the fight for later.
 If you win the fight, you will win golds, and xp. If you have enough xp you level_up and you have better stats.
 
@@ -55,6 +68,9 @@ To buy object, you need golds that you can find after fights and on the ground.
 The size of the map is 7*7 so there a 49 locations to discover.
 To see where you are, at each movement, you can see the coordinate and the place of your character.
 If you want to open your map, you can type map to have the entire map and your position.
+
+![map](https://github.com/user-attachments/assets/2920f6cf-5aff-423a-919b-150f7e6d2c86)
+
 
 ## Random events
 On the map, there are random events. It can be something good or bad so be carefull !
