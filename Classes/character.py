@@ -1,7 +1,7 @@
 from random import randrange
 
 class Character :
-  def __init__(self, name, level, health, attack, defense, position_x, position_y, critic_hit_chance, critic_hit, miss_hit_chance, gold):
+  def __init__(self, name, level, health, attack, defence, position_x, position_y, critic_hit_chance, critic_hit, miss_hit_chance, gold):
     self.name = name
     self.level = level
     self.xp = 0
@@ -9,7 +9,7 @@ class Character :
     self.level_multiplicator = 1
     self.health = health
     self.attack = attack
-    self.defense = defense
+    self.defence = defence
     self.inventory = []
     self.position_x = position_x
     self.position_y = position_y
@@ -23,7 +23,7 @@ class Player (Character):
     super().__init__(name, 1, 100, 10, 3, 3, 3, 10, 2, 15, 50)
     self.weapon = []
     self.temp_attack = 0
-    self.temp_defense = 0
+    self.temp_defence = 0
     
   # First choice in fight, the player attack his enemy
   def attack_action(self, monster):
@@ -41,26 +41,29 @@ class Player (Character):
         selected_weapon = wea
         break
     
-    player_test = randrange(1,100)      
-    # Critic hit
-    if player_test < selected_weapon.critic_chance_hit + self.critic_hit_chance:
-        monster.health -= ( self.attack + self.temp_attack ) * self.critic_hit * selected_weapon.stat - monster.defense
-        print("CRITIC HIT !")
-        if monster.health < 0:
-          monster.health = 0
-        print(monster.name, " has ", monster.health, " HP")
-        
-    # Miss
-    elif player_test > 100 - (selected_weapon.miss_chance_hit + self.miss_hit_chance):
-        print("Oof, you miss !")
-        
-    # Normal hit
-    else:
-        monster.health -= ( self.attack + self.temp_attack ) * selected_weapon.stat - monster.defense
-        print("You hit him !")
-        if monster.health < 0:
-          monster.health = 0
-        print(monster.name, " has ", monster.health, " HP")
+    try:
+      player_test = randrange(1,100)      
+      # Critic hit
+      if player_test < selected_weapon.critic_chance_hit + self.critic_hit_chance:
+          monster.health -= ( self.attack + self.temp_attack ) * self.critic_hit * selected_weapon.stat - monster.defence
+          print("CRITIC HIT !")
+          if monster.health < 0:
+            monster.health = 0
+          print(monster.name, " has ", monster.health, " HP")
+          
+      # Miss
+      elif player_test > 100 - (selected_weapon.miss_chance_hit + self.miss_hit_chance):
+          print("Oof, you miss !")
+          
+      # Normal hit
+      else:
+          monster.health -= ( self.attack + self.temp_attack ) * selected_weapon.stat - monster.defence
+          print("You hit him !")
+          if monster.health < 0:
+            monster.health = 0
+          print(monster.name, " has ", monster.health, " HP")
+    except:
+      print("Next time write the name of the weapon please")
         
     print("\n")
     
@@ -88,8 +91,8 @@ class Player (Character):
                 print("You use your health_potion! You have: ", self.health, " HP")
             elif player_input == "attack potion":
                 print("You use your attack_potion! You have: ", self.attack, " attack points more")
-            elif player_input == "defense potion":
-                print("You use your defense_potion! You have: ", self.defense, " defense points more")
+            elif player_input == "defence potion":
+                print("You use your defence_potion! You have: ", self.defence, " defence points more")
             self.inventory.remove(selected_obj)
 
         else:
@@ -109,7 +112,7 @@ class Player (Character):
     self.max_xp = self.max_xp * self.level_multiplicator
     self.health += 15
     self.attack += 5
-    self.defense += 5 
+    self.defence += 5 
     self.critic_hit_chance += 2
     self.miss_hit_chance -= 1
     self.critic_hit += 0.5
@@ -119,8 +122,8 @@ class Player (Character):
 
 
 class Monster (Character):
-  def __init__(self, name, level, health, attack, defense, position_x, position_y, critic_hit_chance, critic_hit, miss_hit, gold, drop_xp, special_hit):
-    super().__init__(name,level, health, attack, defense, position_x, position_y, critic_hit_chance, critic_hit, miss_hit, gold)
+  def __init__(self, name, level, health, attack, defence, position_x, position_y, critic_hit_chance, critic_hit, miss_hit, gold, drop_xp, special_hit):
+    super().__init__(name,level, health, attack, defence, position_x, position_y, critic_hit_chance, critic_hit, miss_hit, gold)
     self.drop_xp = drop_xp 
     self.special_hit = special_hit
     
@@ -130,7 +133,7 @@ class Monster (Character):
     
     # Special hit
     if monster_test < self.critic_hit_chance:
-        player.health -= self.attack * self.critic_hit - ( player.defense + player.temp_defense)
+        player.health -= self.attack * self.critic_hit - ( player.defence + player.temp_defence)
         print(self.special_hit)
         print("You have ", player.health, " HP")
         
@@ -141,13 +144,13 @@ class Monster (Character):
         
     # Normal hit
     else:
-        player.health -= self.attack - ( player.defense + player.temp_defense)
+        player.health -= self.attack - ( player.defence + player.temp_defence)
         print(self.name, " hits you !")
         print("You have ", player.health, " HP")
         
     print("\n")
 
 class Boss (Monster):
-  def __init__(self, name, level, health, attack, defense, position_x, position_y, critic_hit_chance, critic_hit, miss_hit, gold, drop_xp, special_hit):
-    super().__init__(name,level, health, attack, defense, position_x, position_y, critic_hit_chance, critic_hit, miss_hit, gold ,drop_xp, special_hit)
+  def __init__(self, name, level, health, attack, defence, position_x, position_y, critic_hit_chance, critic_hit, miss_hit, gold, drop_xp, special_hit):
+    super().__init__(name,level, health, attack, defence, position_x, position_y, critic_hit_chance, critic_hit, miss_hit, gold ,drop_xp, special_hit)
     self.boss_dead = False

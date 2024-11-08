@@ -23,8 +23,8 @@ list_objects = [
     health_potion("big health potion", 30, *random_position_without_exclude_coordinates(forbidden_coords), 0),
     attack_potion("attack potion", 10, *random_position_without_exclude_coordinates(forbidden_coords), 0),
     attack_potion("attack potion", 10, *random_position_without_exclude_coordinates(forbidden_coords), 0),
-    defense_potion("defense potion", 5, *random_position_without_exclude_coordinates(forbidden_coords), 0),
-    defense_potion("defense potion", 5, *random_position_without_exclude_coordinates(forbidden_coords), 0)
+    defence_potion("defence potion", 5, *random_position_without_exclude_coordinates(forbidden_coords), 0),
+    defence_potion("defence potion", 5, *random_position_without_exclude_coordinates(forbidden_coords), 0)
 ]
 
 # Creation of all of the monsters

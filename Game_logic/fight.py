@@ -15,7 +15,7 @@ def fight(player, list_monster):
             # While both are alive
             while player.health > 0 and monster.health > 0:
                 print("What do you want to do ? \n")
-                print("1. You can attack with on of your weapons")
+                print("1. You can attack with one of your weapons")
                 print("2. You can use an object from your inventory")
                 print("3. Or you can run away")
                 
@@ -34,7 +34,7 @@ def fight(player, list_monster):
                         player.xp += monster.drop_xp
                         player.gold += monster.gold
                         player.temp_attack = 0
-                        player.temp_defense = 0
+                        player.temp_defence = 0
                         print("YOU KILLED THE LEVEL ",monster.level, monster.name + "!")
                         print("You win : ", monster.gold, " gold coins !")
                         if type(monster) == Boss:

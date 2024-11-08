@@ -17,8 +17,8 @@ class attack_potion (Object):
   def use(self,Player):
     Player.temp_attack += self.value
 
-class defense_potion (Object):
+class defence_potion (Object):
   def use(self,Player):
-    Player.temp_defense += self.value
+    Player.temp_defence += self.value
     
         
