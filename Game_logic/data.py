@@ -21,6 +21,7 @@ list_objects = [
     health_potion("health potion", 10, *random_position_without_exclude_coordinates(forbidden_coords), 0),
     health_potion("big health potion", 30, *random_position_without_exclude_coordinates(forbidden_coords), 0),
     health_potion("big health potion", 30, *random_position_without_exclude_coordinates(forbidden_coords), 0),
+    health_potion("big health potion", 30, *random_position_without_exclude_coordinates(forbidden_coords), 0),
     attack_potion("attack potion", 10, *random_position_without_exclude_coordinates(forbidden_coords), 0),
     attack_potion("attack potion", 10, *random_position_without_exclude_coordinates(forbidden_coords), 0),
     defence_potion("defence potion", 5, *random_position_without_exclude_coordinates(forbidden_coords), 0),
@@ -62,6 +63,8 @@ list_event = [
 # Creation of all of the potion in the shop
 list_potion_shop = [
     health_potion("health potion", 10, -1, -1, 25),
+    health_potion("health potion", 10, -1, -1, 25),
+    health_potion("big health potion", 30, -1, -1, 35),
     health_potion("big health potion", 30, -1, -1, 35),
     attack_potion("attack potion", 10, -1, -1, 40)
 ]
