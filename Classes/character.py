@@ -119,7 +119,21 @@ class Player (Character):
     print("YOU LEVEL UP ! You are level ", self.level, " You have better stats ! \n")
     return True
 
-
+  # Show player stats
+  def print_player_stats(self):
+    print(f"Your stats:")
+    print(f"Name: {self.name}")
+    print(f"Level: {self.level}")
+    print(f"XP: {self.xp}/{self.max_xp}")
+    print(f"Health: {self.health}")
+    print(f"Attack: {self.attack}")
+    print(f"Defence: {self.defence}")
+    print(f"Position: ({self.position_x}, {self.position_y})")
+    print(f"Critic Hit Chance: {self.critic_hit_chance}%")
+    print(f"Critic Hit Multiplier: {self.critic_hit}")
+    print(f"Miss Hit Chance: {self.miss_hit_chance}%")
+    print(f"Gold: {self.gold}")
+    print("\n")
 
 class Monster (Character):
   def __init__(self, name, level, health, attack, defence, position_x, position_y, critic_hit_chance, critic_hit, miss_hit, gold, drop_xp, special_hit):

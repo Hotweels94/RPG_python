@@ -40,7 +40,8 @@ Now you have 3 options
 
 
 * You can run away and leave the fight for later.
-If you win the fight, you will win golds, and xp. If you have enough xp you level_up and you have better stats.
+If you win the fight, you will win golds, and xp. 
+If you have enough xp you level_up and you have better stats.
 
 ## Inventory
 On the map, you can find randomly potions that can be use in fights. When you walk on it, it's add to your inventory. 

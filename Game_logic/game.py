@@ -17,7 +17,7 @@ def start_game(player, list_monster, list_objects, list_weapon, list_event, list
     while player.health > 0 and boss.boss_dead == False:
 
         # Player input and after we verify the position of the player
-        player_input = input("Your decision (move, map, save or quit) : ")
+        player_input = input("Your decision (move, map, stats, save or quit) : ")
         print("\n")
         
         old_x, old_y = player.position_x, player.position_y
@@ -63,6 +63,9 @@ def start_game(player, list_monster, list_objects, list_weapon, list_event, list
             
         elif player_input.lower() == "map":
             show_map(player)
+            
+        elif player_input.lower() == "stats":
+            player.print_player_stats()
             
         else:
             print("Please enter a good direction")
