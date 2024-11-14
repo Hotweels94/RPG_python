@@ -14,7 +14,7 @@ def launch_screen():
         print("2. Load your game \n")
         print("3. Controls \n")
         print("4. About \n")
-        print("4. Quit \n")
+        print("5. Quit \n")
         player_input = int(input("Choice : "))
         
         if player_input == 1:
