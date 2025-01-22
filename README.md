@@ -77,7 +77,7 @@ If you want to open your map, you can type map to have the entire map and your p
 ## Random events
 On the map, there are random events. It can be something good or bad so be carefull !
 
-## Important coordinates (Don't reed it if you don't want to be spoil !)
+## Important coordinates (Don't read it if you don't want to be spoiled !)
 If you don't want to discover the game by yourself, there is all of the static coordinates of the game :
 Player spawn : x: 3, y: 3 (center of the map)
 Boss spawn : x: 0, y: 0
